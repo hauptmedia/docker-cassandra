@@ -16,5 +16,11 @@ Run cassandra in a docker container
 ## Example
 
 ```bash
-docker run -d -e SEEDS="<ip1>,<ip2>,<ip3>" hauptmedia/cassandra
+docker run -d \
+-e SEEDS="<ip1>,<ip2>,<ip3>" \
+-e CLUSTER_NAME="My Cluster Name" \
+-e ENDPOINT_SNITCH="GossipingPropertyFileSnitch" \
+-e dc=DC1 \
+-e rack=RACK1 \
+hauptmedia/cassandra
 ```
