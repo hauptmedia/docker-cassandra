@@ -22,5 +22,7 @@ docker run -d \
 -e ENDPOINT_SNITCH="GossipingPropertyFileSnitch" \
 -e dc=DC1 \
 -e rack=RACK1 \
+-v /path/to/spindle1:/opt/cassandra/data \
+-v /path/to/spindle2:/opt/cassandra/data/commitlog \
 hauptmedia/cassandra
 ```
