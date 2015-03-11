@@ -26,7 +26,7 @@ if [ -n "$DC" ] && [ -n "$RACK" ]; then
 fi
 
 if [ -n "$SEEDS" ]; then
-    SEEDS=${CONTAINER_IP},${SEEDS}
+    SEEDS=${SEEDS},${CONTAINER_IP}
     sed -i -e "s/- seeds: .*/- seeds: \"$SEEDS\"/" $CASSANDRA_HOME/conf/cassandra.yaml
 fi
 
