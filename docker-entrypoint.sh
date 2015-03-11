@@ -1,8 +1,10 @@
 #!/bin/sh
 
+CONTAINER_IP=$(hostname --ip-address)
+
 if [ -z "$LISTEN_ADDRESS" ]; then
     #if listen address is not specified get the ip address of the container
-    LISTEN_ADDRESS=$(hostname --ip-address)
+    LISTEN_ADDRESS=${CONTAINER_IP}
 fi
 
 sed -i -e "s/listen_address: .*/listen_address: $LISTEN_ADDRESS/"                   $CASSANDRA_HOME/conf/cassandra.yaml
@@ -24,6 +26,7 @@ if [ -n "$DC" ] && [ -n "$RACK" ]; then
 fi
 
 if [ -n "$SEEDS" ]; then
+    SEEDS=${CONTAINER_IP},${SEEDS}
     sed -i -e "s/- seeds: .*/- seeds: \"$SEEDS\"/" $CASSANDRA_HOME/conf/cassandra.yaml
 fi
 
