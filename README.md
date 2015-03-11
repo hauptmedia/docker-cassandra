@@ -20,8 +20,8 @@ docker run -d \
 -e SEEDS="<ip1>,<ip2>,<ip3>" \
 -e CLUSTER_NAME="My Cluster Name" \
 -e ENDPOINT_SNITCH="GossipingPropertyFileSnitch" \
--e dc=DC1 \
--e rack=RACK1 \
+-e DC=DC1 \
+-e RACK=RACK1 \
 -v /path/to/spindle1:/opt/cassandra/data \
 -v /path/to/spindle2:/opt/cassandra/data/commitlog \
 hauptmedia/cassandra

@@ -18,9 +18,9 @@ if [ -n "$ENDPOINT_SNITCH" ]; then
     sed -i -e "s/endpoint_snitch: .*/endpoint_snitch: $ENDPOINT_SNITCH/" $CASSANDRA_HOME/conf/cassandra.yaml
 fi
 
-if [ -n "$dc" ] && [ -n "$rack" ]; then
-    echo "dc=$dc" >$CASSANDRA_HOME/conf/cassandra-rackdc.properties
-    echo "rack=$rack" >>$CASSANDRA_HOME/conf/cassandra-rackdc.properties
+if [ -n "$DC" ] && [ -n "$RACK" ]; then
+    echo "dc=$DC" >$CASSANDRA_HOME/conf/cassandra-rackdc.properties
+    echo "rack=$RACK" >>$CASSANDRA_HOME/conf/cassandra-rackdc.properties
 fi
 
 if [ -n "$SEEDS" ]; then
