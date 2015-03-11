@@ -17,9 +17,9 @@ Run cassandra in a docker container
 
 ```bash
 docker run -d \
--e SEEDS="<ip1>,<ip2>,<ip3>" \
--e CLUSTER_NAME="My Cluster Name" \
--e ENDPOINT_SNITCH="GossipingPropertyFileSnitch" \
+-e SEEDS=<ip1>,<ip2>,<ip3> \
+-e CLUSTER_NAME=MyCluster \
+-e ENDPOINT_SNITCH=GossipingPropertyFileSnitch \
 -e DC=DC1 \
 -e RACK=RACK1 \
 -v /path/to/spindle1:/opt/cassandra/data \
