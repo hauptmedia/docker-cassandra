@@ -8,7 +8,7 @@ ENV         CASSANDRA_DOWNLOAD_URL  http://www.us.apache.org/dist/cassandra/${CA
 
 # install needed debian packages & clean up
 RUN		apt-get update && \
-		apt-get install -y --no-install-recommends curl tar ca-certificates && \
+		apt-get install -y --no-install-recommends curl tar ca-certificates python && \
 		apt-get clean autoclean && \
         apt-get autoremove --yes && \
         rm -rf /var/lib/{apt,dpkg,cache,log}/
