@@ -2,7 +2,7 @@ FROM		hauptmedia/java:oracle-java7
 
 ENV     	DEBIAN_FRONTEND noninteractive
 
-ENV		CASSANDRA_VERSION	2.1.5
+ENV		CASSANDRA_VERSION	2.1.7
 ENV		CASSANDRA_HOME		/opt/cassandra
 ENV		CASSANDRA_DOWNLOAD_URL  http://www.us.apache.org/dist/cassandra/${CASSANDRA_VERSION}/apache-cassandra-${CASSANDRA_VERSION}-bin.tar.gz
 
