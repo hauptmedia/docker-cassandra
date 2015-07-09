@@ -8,7 +8,7 @@ ENV		CASSANDRA_DOWNLOAD_URL  http://www.us.apache.org/dist/cassandra/${CASSANDRA
 
 # install needed debian packages & clean up
 RUN		apt-get update && \
-		apt-get install -y --no-install-recommends curl tar ca-certificates python && \
+		apt-get install -y --no-install-recommends curl tar ca-certificates python supervisor && \
 		apt-get clean autoclean && \
         apt-get autoremove --yes && \
         rm -rf /var/lib/{apt,dpkg,cache,log}/
@@ -32,6 +32,8 @@ EXPOSE 7000 7001 7199 9042 9160
 
 COPY	docker-entrypoint.sh	/usr/local/sbin/docker-entrypoint.sh
 
+ADD	supervisor/conf.d/ /etc/supervisor/conf.d/
+
 ENTRYPOINT ["/usr/local/sbin/docker-entrypoint.sh"]
 
-CMD ["bin/cassandra", "-f"]
+CMD ["/usr/bin/supervisord"]
