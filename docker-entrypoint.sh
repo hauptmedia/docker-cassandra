@@ -7,6 +7,10 @@ if [ -z "$LISTEN_ADDRESS" ]; then
     LISTEN_ADDRESS=${CONTAINER_IP}
 fi
 
+if [ -z "$SEEDS" ]; then
+    SEEDS=${CONTAINER_IP}
+fi
+
 sed -i -e "s/listen_address: .*/listen_address: $LISTEN_ADDRESS/"                   $CASSANDRA_HOME/conf/cassandra.yaml
 sed -i -e "s/rpc_address: .*/rpc_address: 0.0.0.0/"                                 $CASSANDRA_HOME/conf/cassandra.yaml
 sed -i -e "s/# broadcast_address.*/broadcast_address: $LISTEN_ADDRESS/"             $CASSANDRA_HOME/conf/cassandra.yaml
@@ -25,8 +29,13 @@ if [ -n "$DC" ] && [ -n "$RACK" ]; then
     echo "rack=$RACK" >>$CASSANDRA_HOME/conf/cassandra-rackdc.properties
 fi
 
-if [ -n "$SEEDS" ]; then
-    sed -i -e "s/- seeds: .*/- seeds: \"$SEEDS\"/" $CASSANDRA_HOME/conf/cassandra.yaml
+sed -i -e "s/- seeds: .*/- seeds: \"$SEEDS\"/" $CASSANDRA_HOME/conf/cassandra.yaml
+
+if [ -z "$OPS_IP" ]; then
+	rm /etc/supervisor/conf.d/datastax-agent.conf
+else 
+	/opt/datastax-agent/bin/setup ${OPS_IP}
 fi
+
 
 exec "$@"
