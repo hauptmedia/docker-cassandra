@@ -7,7 +7,7 @@ ENV		CASSANDRA_HOME		/opt/cassandra
 ENV		CASSANDRA_DOWNLOAD_URL  http://www.us.apache.org/dist/cassandra/${CASSANDRA_VERSION}/apache-cassandra-${CASSANDRA_VERSION}-bin.tar.gz
 
 ENV		AGENT_HOME		/opt/datastax-agent
-ENV		AGENT_VERSION		5.1.3
+ENV		AGENT_VERSION		5.2.0
 ENV		AGENT_DOWNLOAD_URL	http://downloads.datastax.com/community/datastax-agent-${AGENT_VERSION}.tar.gz
 
 # install needed debian packages & clean up
